@@ -1,13 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
+    width: 100%;
     text-align: center;
+    padding: 20px;
+
+}
+
+#startBtn {
+    padding: 10px 30px;
+    font-size: 18px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 2px solid #333;
+    background-color: #333;
+    color: white;
+}
+
+#startBtn {
+    background: linear-gradient(135deg, #00feba, #5b548a);
+    color: rgb(7, 6, 42);
+
 }
 
 .btn {
-    height: 200px;
-    width: 200px;
+    height: 22vw;
+    width: 22vw;
+
+    max-height: 200px;
+    max-width: 200px;
+
+    min-height: 120px;
+    min-width: 120px;
+
     border-radius: 20%;
     border: 10px solid black;
-    margin: 20px;
+    margin: 10px;
+    cursor: pointer;
 }
 
 .btn-container {
@@ -28,10 +62,10 @@ body {
     background-color: yellow;
 }
 
-.flash {
+.userflash {
     background-color: gray;
 }
 
-.userflash {
+.flash {
     background-color: wheat;
 }
