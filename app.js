@@ -5,6 +5,7 @@ let ranCol = ["red", "green", "blue", "yellow"];
 
 let start = false;
 let level = 0;
+let highScore=0;
 let h2 = document.querySelector("h2");
 
 // Keyboard support
@@ -44,7 +45,7 @@ function userflash(btn) {
 function levelUp() {
     userSeq = [];
     level++;
-    h2.innerText = `Level ${level}`;
+    h2.innerText = `Level ${level} | Highest Score: ${highScore}`;
 
     let ran = Math.floor(Math.random() * 4);
     let color = ranCol[ran];
@@ -74,6 +75,7 @@ function check(ind) {
             setTimeout(levelUp, 1000);
         }
     } else {
+        highScore=Math.max(level,highScore);
         h2.innerHTML = `Game Over! <b>Your Score: ${level}</b><br>Press any key or click Start to play again.`;
         document.querySelector("body").style.backgroundColor = "red";
         setTimeout(function () {
@@ -88,5 +90,6 @@ function reset() {
     userSeq = [];
     start = false;
     level = 0;
+    // highScore=0;
     document.getElementById("startBtn").style.display = "inline-block";
 }
