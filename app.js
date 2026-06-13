@@ -1,7 +1,7 @@
 let gameSeq = [];
 let userSeq = [];
 
-let ranCol = ["red", "green", "blue", "yellow"];
+let ranCol = ["red", "blue", "green", "yellow"];
 
 let start = false;
 let level = 0;
@@ -9,8 +9,8 @@ let highScore=0;
 let h2 = document.querySelector("h2");
 
 // Keyboard support
-document.addEventListener("keypress", function () {
-    if (start == false) {
+document.addEventListener("keypress", function (ev) {
+    if (ev.key==='Enter' && start== false) {
         startGame();
     }
 });
@@ -56,7 +56,8 @@ function levelUp() {
     btnflash(btn);
 }
 
-function btnPress() {
+function btnClick() {
+    if(!start) return;
     let btn = this;
     let userColor = btn.getAttribute("id");
     userSeq.push(userColor);
@@ -64,10 +65,31 @@ function btnPress() {
     check(userSeq.length - 1);
 }
 
+// function btnPress(){
+    
+// }
+
 let allBtns = document.querySelectorAll(".btn");
 for (btn of allBtns) {
-    btn.addEventListener("click", btnPress);
+    btn.addEventListener("click", btnClick);
 }
+
+    document.addEventListener('keydown', (ev) =>{
+        if(!start) return;
+
+        let b =Number( ev.key);
+
+        if(isNaN(b)) return;
+        console.log(b);
+        let userColor= ranCol[b-1];
+
+        if(!userColor) return;
+
+        userSeq.push(userColor);
+        let btn = document.querySelector(`.${userColor}`)
+        userflash(btn);
+        check(userSeq.length-1);
+    });
 
 function check(ind) {
     if (userSeq[ind] === gameSeq[ind]) {
